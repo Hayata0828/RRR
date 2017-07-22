@@ -1,0 +1,17 @@
+<div class="content clearfix">
+  <div class="users_menu_box">
+    <%= link_to( "商品登録", new_admin_product_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "新規管理者登録", new_admin_registration_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "購買履歴閲覧", orders_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "アカウント情報", admins_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "ログアウト", destroy_admin_session_path, method: :delete, :class => "botton admin_menu" ) %>
+  </div>
+  <div class="products_index">
+    <h3>商品を完全に削除しますがよろしいですか？</h3>
+    <p>※削除した商品はもとに戻りません。</p>
+  </div>
+  <div class="menu_bottom">
+          <%= link_to( "削除", admin_product_path, method: :delete, :class => "order bottom" ) %>
+          <%= link_to( "戻る", :back, :class => "favorite bottom" ) %>
+        </div>
+</div>

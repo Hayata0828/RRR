@@ -1,0 +1,41 @@
+<div class="content clearfix">
+  <div class="users_menu_box">
+    <div class="search menu">
+      <p>検索</p>
+    </div>
+    <div class="category_search menu">
+      <p>カテゴリー検索</p>
+    </div>
+    <div class="account_info menu">
+      <p>アカウント情報</p>
+    </div>
+  </div>
+
+
+  <div class="products_index clearfix">
+    <p>商品詳細</p>
+      <div class="product_show_box">
+        <div class="product_show_title">
+          <%= @product.title %>
+        </div>
+        <div class="product_show_image_box">
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_main, class: 'product-img' %>
+          </div>
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_sub1, class: 'product-img' %>
+          </div>
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_sub2, class: 'product-img' %>
+          </div>
+        </div>
+        <div class="product_show_price">
+          ¥<%= @product.price %>
+        </div>
+        <div class="menu_bottom">
+          <%= link_to( "注文", product_orders_path(@product.id), :class => "order bottom" ) %>
+          <%= link_to( "お気に入り", edit_admin_product_path, :class => "favorite bottom" ) %>
+        </div>
+      </div>
+  </div>
+</div>

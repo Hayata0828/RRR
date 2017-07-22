@@ -1,0 +1,39 @@
+<div class="content clearfix">
+  <div class="users_menu_box">
+    <%= link_to( "商品登録", new_product_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "新規管理者登録", new_admin_registration_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "購買履歴閲覧", orders_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "アカウント情報", admins_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "ログアウト", destroy_admin_session_path, method: :delete, :class => "botton admin_menu" ) %>
+  </div>
+
+  <div class="products_index">
+    <p>商品登録</p>
+    <div class="product_show_box">
+      <%= form_for(@product, url: admin_products_path, method: :post) do |f| %>
+        <div class="product_show_title">
+        <%= f.text_field :title, placeholder: "商品名", :class => "product_show_title" %>
+        </div>
+
+        <div class="product_show_image_box">
+            <%= f.attachment_field :image_main %>
+            <%= f.attachment_field :image_sub1 %>
+            <%= f.attachment_field :image_sub2 %>
+        </div>
+        <div class="product_show_description">
+          <%= f.text_field :description, placeholder: "商品の説明文", :class => "product_show_description" %>
+        </div>
+        <div class="product_show_price">
+          <%= f.number_field :price, placeholder: "価格", :class => "product_show_description" %>
+        </div>
+        <div class="admin_botton">
+          <div  class="clearfix"  style="float: left;">
+            <%= f.select :category, ["メンズ", "レディース", "ベビー・キッズ", "家電・スマホ・カメラ", "スポーツ・レジャー", "コスメ・美容", "インテリア・雑貨"] %>
+          </div>
+          <%= f.hidden_field :admin_id, value: current_admin.id %>
+          <%= f.submit "登録", :class => "new bottom" %>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>

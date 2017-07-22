@@ -1,0 +1,56 @@
+<div class="content clearfix">
+  <div class="users_menu_box">
+    <%= link_to( "商品登録", new_admin_product_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "新規管理者登録", new_admin_registration_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "購買履歴閲覧", orders_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "アカウント情報", admins_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "ログアウト", destroy_admin_session_path, method: :delete, :class => "botton admin_menu" ) %>
+  </div>
+  <div class="products_index">
+    <h3>こちらの商品を注文します。</h3>
+    <p>発送先をお確かめください。</p>
+
+    <div class="order_product">
+      <div class="product_show_box">
+        <p style="padding: 10px">商品情報</p>
+        <div class="product_show_title">
+          <%= @product.title %>
+        </div>
+        <div class="product_show_image_box">
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_main, class: 'product-img' %>
+          </div>
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_sub1, class: 'product-img' %>
+          </div>
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_sub2, class: 'product-img' %>
+          </div>
+        </div>
+        <div class="product_show_price">
+          ¥<%= @product.price %>
+        </div>
+      </div>
+    </div>
+
+    <div class="user_info">
+      <p style="padding: 10px">お客様情報</p>
+      <div class="user_info_box">
+        氏名：<%= @user.name %>
+      </div>
+      <div class="user_info_box">
+        電話番号：<%= @user.phone_number %>
+      </div>
+      <div class="user_info_box">
+        メールアドレス：<%= @user.email %>
+      </div>
+      <div class="user_info_box">
+        住所：<%= @user.address %>
+      </div>
+    </div>
+  </div>
+  <div class="menu_bottom">
+          <%= link_to( "注文", product_orders_path(@product.id), method: :post, :class => "order bottom" ) %>
+          <%= link_to( "戻る", :back, :class => "favorite bottom" ) %>
+        </div>
+</div>

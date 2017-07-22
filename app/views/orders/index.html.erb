@@ -1,0 +1,35 @@
+<div class="content clearfix">
+  <div class="users_menu_box">
+    <% if user_signed_in? %>
+      <div class="user_name">
+        <p>こんにちは、<%= current_user.name %>さん</p>
+      </div>
+        <%= link_to( "検索", new_admin_product_path, :class => "search menu" ) %>
+        <%= link_to( "カテゴリー検索", new_admin_product_path, :class => "category_search menu" ) %>
+        <%= link_to( "購買履歴", orders_path, :class => "account_info menu" ) %>
+    <% else %>
+        <%= link_to( "検索", new_admin_product_path, :class => "search menu" ) %>
+        <%= link_to( "カテゴリー検索", new_admin_product_path, :class => "category_search menu" ) %>
+        <%= link_to( "ログイン", new_user_session_path, :class => "botton menu" ) %>
+    <% end %>
+  </div>
+
+  <div class="products_index">
+    <p>購買履歴</p>
+    <% @orders.each do |order| %>
+      
+        <div class="product_box">
+          <div class="product_title">
+            <%= order.product.title %>
+          </div>
+          <div class="product_price">
+            ¥<%= order.product.price %>
+          </div>
+        </div>
+      
+    <% end %>
+    <div class="pagenate">
+      <%= paginate(@orders) %>
+    </div>
+  </div>
+</div>

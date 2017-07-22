@@ -1,0 +1,36 @@
+<div class="content clearfix">
+  <div class="users_menu_box">
+    <%= link_to( "商品登録", new_admin_product_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "新規管理者登録", new_admin_registration_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "購買履歴閲覧", orders_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "アカウント情報", admins_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "ログアウト", destroy_admin_session_path, method: :delete, :class => "botton admin_menu" ) %>
+  </div>
+
+  <div class="products_index clearfix">
+    <p>商品詳細</p>
+      <div class="product_show_box">
+        <div class="product_show_title">
+          <%= @product.title %>
+        </div>
+        <div class="product_show_image_box">
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_main, class: 'product-img' %>
+          </div>
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_sub1, class: 'product-img' %>
+          </div>
+          <div class="product_show_image">
+            <%= attachment_image_tag @product, :image_sub2, class: 'product-img' %>
+          </div>
+        </div>
+        <div class="product_show_price">
+          ¥<%= @product.price %>
+        </div>
+        <div class="menu_bottom">
+          <%= link_to( "削除", "/admin_product/#{@product.id}/destroy_check", :class => "order bottom" ) %>
+          <%= link_to( "編集", edit_admin_product_path, :class => "favorite bottom" ) %>
+        </div>
+      </div>
+  </div>
+</div>

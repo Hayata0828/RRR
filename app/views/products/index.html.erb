@@ -1,0 +1,44 @@
+<div class="content clearfix">
+  <div class="users_menu_box">
+    <% if user_signed_in? %>
+      <div class="user_name">
+        <p>こんにちは、<%= current_user.name %>さん</p>
+      </div>
+        <%= link_to( "検索", new_admin_product_path, :class => "search menu" ) %>
+        <%= link_to( "カテゴリー検索", new_admin_product_path, :class => "category_search menu" ) %>
+        <%= link_to( "購買履歴", orders_path, :class => "account_info menu" ) %>
+    <% else %>
+        <%= link_to( "検索", new_admin_product_path, :class => "search menu" ) %>
+        <%= link_to( "カテゴリー検索", new_admin_product_path, :class => "category_search menu" ) %>
+        <%= link_to( "ログイン", new_user_session_path, :class => "botton menu" ) %>
+    <% end %>
+
+  </div>
+  <div class="products_index">
+    <p>商品一覧</p>
+    <% @products.each do |product| %>
+      <%= link_to product_path(product) do %>
+        <div class="product_box">
+          <div class="product_title">
+            <%= product.title %>
+          </div>
+          <div class="product_image">
+            <%= attachment_image_tag product, :image_main, class: 'product-img' %>
+          </div>
+          <div class="product_price">
+            ¥<%= product.price %>
+          </div>
+        </div>
+      <% end -%>
+    <% end %>
+    <div class="pagenate">
+      <%= paginate(@products) %>
+    </div>
+  </div>
+</div>
+
+    <%= link_to( "商品登録", new_admin_product_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "新規管理者登録", new_admin_registration_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "購買履歴閲覧", orders_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "アカウント情報", admins_path, :class => "botton admin_menu" ) %>
+    <%= link_to( "ログアウト", destroy_admin_session_path, method: :delete, :class => "botton admin_menu" ) %>

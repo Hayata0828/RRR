@@ -1,0 +1,12 @@
+.botton {
+  display: block;
+}
+
+.admin_menu{
+  background-color: #ffa07a;
+  width: 80%;
+  padding: 10px 0;
+  text-align: center;
+  margin: 30px auto;
+  border: 2px solid #696969;
+}
