@@ -81,3 +81,8 @@ gem 'breadcrumbs_on_rails'
 # 画像アップロード
 gem "refile", github: 'refile/refile', require: "refile/rails"
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+
+group :production do
+  gem 'rails_12factor'
+  gem 'unicorn'
+end
